@@ -93,13 +93,13 @@ class VideoRecorder:
 
   def reset(self, seed=None, options={}):
     obs = self._env.reset(seed=seed, options=options)
-    self._frames = [self._env.render(self._size)]
+    self._frames = [self._env.unwrapped.render(self._size)]
     return obs
 
   def step(self, action):
     obs, reward, terminated, truncated, info = self._env.step(action)
     done = terminated or truncated
-    self._frames.append(self._env.render(self._size))
+    self._frames.append(self._env.unwrapped.render(self._size))
     if done:
       self._save()
     return obs, reward, terminated, truncated, info
