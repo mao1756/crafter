@@ -79,7 +79,7 @@ class VideoRecorder:
 
   def __init__(self, env, directory, size=(512, 512)):
     if not hasattr(env, 'episode_name'):
-      env = EpisodeName
+      env = EpisodeName(env)
     self._env = env
     self._directory = pathlib.Path(directory).expanduser()
     self._directory.mkdir(exist_ok=True, parents=True)
