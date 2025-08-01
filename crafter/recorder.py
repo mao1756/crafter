@@ -106,7 +106,12 @@ class VideoRecorder:
 
   def _save(self):
     filename = str(self._directory / (self._env.episode_name + '.mp4'))
-    imageio.mimsave(filename, self._frames)
+    imageio.mimsave(
+            filename,
+            self._frames,
+            fps=5,
+            codec='libx264',
+        )
 
 
 class EpisodeRecorder:
