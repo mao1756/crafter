@@ -192,6 +192,9 @@ class EpisodeName:
       self._unlocked = sum(int(v >= 1) for v in info['achievements'].values())
     return obs, reward, terminated, truncated, info
 
+  def render(self, *args, **kwargs):
+    return self.env.render(*args, **kwargs)
+
   @property
   def episode_name(self):
     return f'{self._timestamp}-ach{self._unlocked}-len{self._length}'
